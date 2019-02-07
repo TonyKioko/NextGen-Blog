@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'app',
+    'users',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,8 +78,10 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'deblog',
+        'USER': 'tonni',
+    'PASSWORD':'1234',
     }
 }
 
