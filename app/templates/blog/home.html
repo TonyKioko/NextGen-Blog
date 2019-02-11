@@ -25,7 +25,7 @@
               </div>
               <div class="col-lg-7 post-right">
                 <a  href="{% url 'post-detail' post.id %}">
-                  <h4 style="color:black">{{post.title}}</h4>
+                  <h4 style="">{{post.title}}</h4>
                 </a>
                 <ul class="meta">
                   <li><a href="{% url 'user-posts' post.author.username %}"><span class="lnr lnr-user"></span>{{post.author.username}}</a></li>
