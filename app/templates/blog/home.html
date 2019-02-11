@@ -1,41 +1,118 @@
 {% extends "blog/base.html" %}
-
+{% load static %}
 {% block content %}
-    {% for post in posts %}
 
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
 
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted|date:'F d, Y' }}</small>
+
+    <section class="latest-post-area">
+    <div class="container no-padding">
+      <div class="row">
+        <div class="col-lg-8 post-list">
+          <!-- Start latest-post Area -->
+          <div class="latest-post-wrap">
+            <h4 class="cat-title">Latest Posts</h4>
+            {% for post in posts %}
+
+            <div class="single-latest-post row align-items-center">
+              <div class="col-lg-5 post-left">
+                <div class="feature-img relative">
+                  <div class="overlay overlay-bg"></div>
+                  <img class="img-fluid" src="{{post.image.url}}" style="height:200px;" alt="">
+                </div>
+                <ul class="tags">
+                  <li><a href="#">{{post.category}}</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-7 post-right">
+                <a href="image-post.html">
+                  <h4>{{post.title}}</h4>
+                </a>
+                <ul class="meta">
+                  <li><a href="#"><span class="lnr lnr-user"></span>{{post.author.username}}</a></li>
+                  <li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ post.date_posted|date:'d F, Y' }}</a></li>
+                  <!-- <li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li> -->
+                </ul>
+                <p class="excert">
+                  {{post.content | truncatechars:30}}
+                
+                </p>
+              </div>
             </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            {% endfor %}
 
-            <p class="article-content">{{ post.content }}</p>
           </div>
-        </article>
-    {% endfor %}
-    {% if is_paginated %}
 
-      {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      {% endif %}
+        </div>
+        <!-- Editor Pick -->
 
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
-      {% endfor %}
+        <div class="col-lg-4">
+							<div class="sidebars-area">
+								<div class="single-sidebar-widget editors-pick-widget">
+									<h6 class="title">Editor’s Pick</h6>
+                  {% for post in posts %}
 
-      {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
+									<div class="editors-pick-post">
+                    {% if post.is_editors_pick%}
+										<div class="feature-img-wrap relative">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<img class="img-fluid" src="{{post.image.url}}" style="height:200px;" alt="">
+											</div>
+											<ul class="tags">
+												<li><a href="#">{{post.category}}</a></li>
+											</ul>
+										</div>
+										<div class="details">
+											<a href="image-post.html">
+												<h4 class="mt-20">{{post.title}}</h4>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span>{{post.author.username}}</a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ post.date_posted|date:'d F, Y' }}</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+											</ul>
+											<p class="excert">
+												{{post.content | truncatechars:30}}
+											</p>
+										</div>
+                    {% endif %}
 
-    {% endif %}
-{% endblock %}
+									</div>
+                  {% endfor %}
+
+								</div>
+
+								<div class="single-sidebar-widget newsletter-widget">
+									<h6 class="title">Newsletter</h6>
+									<p>
+										Here, I focus on a range of items
+										andfeatures that we use in life without
+										giving them a second thought.
+									</p>
+									<div class="form-group d-flex flex-row">
+										<div class="col-autos">
+											<div class="input-group">
+												<input class="form-control" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" type="text">
+											</div>
+										</div>
+										<a href="#" class="bbtns">Subcribe</a>
+									</div>
+									<p>
+										You can unsubscribe us at any time
+									</p>
+								</div>
+
+
+
+
+							</div>
+						</div>
+            <!-- End Editors Pick -->
+
+      </div>
+    </div>
+  </section>
+  <!-- End latest-post Area -->
+
+
+  {% endblock %}

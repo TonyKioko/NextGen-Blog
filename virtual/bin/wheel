@@ -1,4 +1,4 @@
-#!/home/tonni/Desktop/Blog/virtual/bin/python
+#!/home/tonni/Desktop/NextGen-Blog/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
