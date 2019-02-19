@@ -9,6 +9,7 @@ from django.urls import reverse
 class Post(models.Model):
     POST_CATEGORY = (
         ('Science', 'Science'),
+        ('Technology', 'Technology'),
         ('Travel', 'Travel'),
         ('Food', 'Food'),
         ('Lifestyle', 'Lifestyle'),
@@ -19,7 +20,7 @@ class Post(models.Model):
     content = HTMLField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='blog_pics/')
+    image = models.ImageField(upload_to='blog_pics/',default='monitor.jpg')
     is_mvp = models.BooleanField(default=False)
     is_editors_pick = models.BooleanField(default=False)
 
