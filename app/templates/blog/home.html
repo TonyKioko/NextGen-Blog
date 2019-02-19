@@ -27,7 +27,7 @@
                 </ul>
               </div>
               <div class="col-lg-7 post-right">
-                <a  href="{% url 'post-detail' post.id %}">
+                <a  href="{% url 'post-detail' post.id %}" style="text-decoration:none;">
                   <h4 style="">{{post.title}}</h4>
                 </a>
                 <ul class="meta">
@@ -68,13 +68,13 @@
 											</ul>
 										</div>
 										<div class="details">
-                      <a  href="{% url 'post-detail' post.id %}">
+                      <a  href="{% url 'post-detail' post.id %}" tyle="text-decoration:none;">
                         <h4 style="">{{post.title}}</h4>
                       </a>
 											<ul class="meta">
 												<li><a href="#"><span class="lnr lnr-user"></span>{{post.author.username}}</a></li>
 												<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ post.date_posted|date:'d F, Y' }}</a></li>
-												<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+
 											</ul>
 											<p class="excert">
 												{{post.content | truncatechars:70}}

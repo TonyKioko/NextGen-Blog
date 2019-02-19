@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from django.urls import reverse
+from django.utils import timezone
 
 
 
@@ -19,8 +20,8 @@ class Post(models.Model):
     )
     title = models.CharField(max_length=100)
     category = models.CharField(choices=POST_CATEGORY,max_length=80,default='Science',blank=False)
-    content = models.TextField(max_length=2000)
-    date_posted = models.DateTimeField(default=timezone.now)
+    content = models.TextField(max_length=3000)
+    date_posted = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='blog_pics/',default='monitor.jpg')
     is_mvp = models.BooleanField(default=False)
@@ -32,3 +33,5 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+    class Meta:
+        ordering = ['-date_posted']
