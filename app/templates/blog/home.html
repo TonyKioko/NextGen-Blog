@@ -12,6 +12,9 @@
           <div class="latest-post-wrap">
             <h4 class="cat-title">Latest Posts</h4>
             {% for post in posts %}
+            {% if not post.is_editors_pick %}
+
+
 
             <div class="single-latest-post row align-items-center">
               <div class="col-lg-5 post-left">
@@ -38,6 +41,8 @@
                 </p>
               </div>
             </div>
+            {% endif %}
+
             {% endfor %}
 
           </div>
