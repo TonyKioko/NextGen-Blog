@@ -63,16 +63,16 @@
 											</ul>
 										</div>
 										<div class="details">
-											<a href="image-post.html">
-												<h4 class="mt-20">{{post.title}}</h4>
-											</a>
+                      <a  href="{% url 'post-detail' post.id %}">
+                        <h4 style="">{{post.title}}</h4>
+                      </a>
 											<ul class="meta">
 												<li><a href="#"><span class="lnr lnr-user"></span>{{post.author.username}}</a></li>
 												<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ post.date_posted|date:'d F, Y' }}</a></li>
 												<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
 											</ul>
 											<p class="excert">
-												{{post.content | truncatechars:30}}
+												{{post.content | truncatechars:70}}
 											</p>
 										</div>
                     {% endif %}

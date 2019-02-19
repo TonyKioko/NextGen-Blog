@@ -12,12 +12,14 @@ class Post(models.Model):
         ('Technology', 'Technology'),
         ('Travel', 'Travel'),
         ('Food', 'Food'),
+        ('Entertainment', 'Entertainment'),
+
         ('Lifestyle', 'Lifestyle'),
         ('Fashion', 'Fashion'),
     )
     title = models.CharField(max_length=100)
     category = models.CharField(choices=POST_CATEGORY,max_length=80,default='Science',blank=False)
-    content = HTMLField()
+    content = models.TextField(max_length=2000)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='blog_pics/',default='monitor.jpg')
