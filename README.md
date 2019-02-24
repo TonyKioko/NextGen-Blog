@@ -4,15 +4,26 @@ Blog
 [Blog](https://nextgenblog.herokuapp.com/) is a website where users post and share their opinions on various topics. Users can also subscribe to the app to be informed of new posts via email.
 
 ------------------------------------------------------------------------
+## User Stories
+* As a user, I would like to view the blog posts submitted
+* As a user, I would like to comment on blog posts
+* As a user, I would like to view the most recent posts
+* As a user, I would like to alerted when a new post is made by joining a subscription.
+* As a writer, I would like to sign in to the blog.
+* As a writer, I would also like to create a blog from the application.
+* As a writer, I would like to delete comments that I find insulting or degrading.
+* As a writer, I would like to update or delete blogs I have created.
 
-## User Requirements
-
-1. Sign in to the application to start using.
-2. Post a project to be rated/reviewed.
-3. Rate/ review other users' projects.
-4. Search for projects.
-5. View projects overall score
-6. View my profile page.
+## Specifications
+| Behaviour | Input | Output |
+| :---------------- | :---------------: | ------------------: |
+| Create user account | **Click Sign Up button** | New user registered |
+| Welcome email | **On sign Up** | sends welcome email to new user|
+| Display posts | **On the Home page** | PostS by writers displayed per time of posting |
+| See full post | **Click reaf full post/post title** | Read full post and view comments |
+| Create post | **Click New Post**  | Directed to form where writer fill post title and content  |
+| Update Post | **Click Update button** | Post created directed to form to update post |
+| Delete post | **Click Delete Post button** | Post deleted |
 
 ### Live Link ###
 [Blog](https://nextgenblog.herokuapp.com/)
@@ -25,7 +36,7 @@ This project was created on a debian linux platform but should work on other uni
 
 ### Cloning the repository
 ```bash
-git clone https://github.com/TonyKioko/Awwards && cd Awwards
+git clone https://github.com/TonyKioko/NextGen-Blog && cd NextGen- Blog
 ```
 
 ### Creating a virtual environment
@@ -77,7 +88,7 @@ python manage.py app test
 ## Live Demo
 
 The web app can be accessed from the following link:
-[PyAwards](https://pyawards.herokuapp.com/)
+[Blog](https://nextgenblog.herokuapp.com/)
 
 ## Technology used
 
